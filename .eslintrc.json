@@ -17,8 +17,8 @@
     "sourceType": "module"
   },
   "rules": {
-    "@typescript-eslint/no-unused-vars": "warn",
     "prisma/naming-convention": "off",
-    "prisma/require-select": "off" // disable if it keeps throwing errors
+    "prisma/require-select": "off", // disable if it keeps throwing errors
+    "@typescript-eslint/no-unused-vars": "off"
   }
 }
