@@ -1,0 +1,24 @@
+// {
+//   "extends": "next/core-web-vitals"
+// }
+
+{
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prisma/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prisma"],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": ".",
+    "sourceType": "module"
+  },
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "warn",
+    "prisma/naming-convention": "off",
+    "prisma/require-select": "off" // disable if it keeps throwing errors
+  }
+}
