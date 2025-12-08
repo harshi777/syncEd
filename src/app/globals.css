@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ================== React Calendar (Small Calendar) ================== */
 .react-calendar {
   width: 100% !important;
   border: none !important;
@@ -17,10 +18,14 @@
   font-weight: 600;
 }
 
+/* =================== Big Calendar (Schedule) =================== */
+
+/* Hide left button group */
 .rbc-btn-group:first-child {
   display: none !important;
 }
 
+/* Toolbar */
 .rbc-toolbar-label {
   text-align: right !important;
   padding: 0px 20px !important;
@@ -41,18 +46,26 @@
   box-shadow: none !important;
 }
 
+/* ===== Day/Week Layout Fixes (important for overflow issue) ===== */
 .rbc-time-view {
-  border-color: #eee !important ;
+  border-color: #eee !important;
 }
 
+/* DO NOT fully hide header (breaks height calculation) */
 .rbc-time-header {
-  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
+/* Stretch rows properly */
 .rbc-time-content {
   border: none !important;
+  align-items: stretch !important;
 }
 
+/* Time column */
 .rbc-time-gutter.rbc-time-column {
   font-size: 12px !important;
 }
@@ -61,59 +74,80 @@
   padding: 0px 20px !important;
 }
 
+/* Background coloring */
 .rbc-timeslot-group {
   background-color: #f7fdff !important;
 }
 
+/* FIX INVALID CSS (you had font-style: 14px) */
 .rbc-day-slot {
-  font-style: 14px !important;
+  font-size: 14px !important;
+  min-height: 50px !important; /* ensures event text has space */
 }
 
+/* =================== Event Styling =================== */
 .rbc-event {
   border: none !important;
   color: black !important;
-  padding: 10px !important;
-  margin: 10px !important;
-  width: 99% !important;
+  background-color: transparent !important;
+
+  width: 100% !important;
+  padding: 2px 4px !important;
+  margin: 1px 0 !important;
+
+  /* Text fixes */
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow: visible !important;
+  line-height: 1.2 !important;
+
+  height: auto !important;
+  min-height: 25px !important;
 }
 
+/* Color Variations */
 .rbc-event:nth-child(1) {
   background-color: #e2f8ff !important;
 }
-
 .rbc-event:nth-child(2) {
   background-color: #fefce8 !important;
 }
-
 .rbc-event:nth-child(3) {
   background-color: #f2f1ff !important;
 }
-
 .rbc-event:nth-child(4) {
   background-color: #fdf3fb !important;
 }
-
 .rbc-event:nth-child(5) {
   background-color: #e2f8ff !important;
 }
-
 .rbc-event:nth-child(6) {
   background-color: #fefce8 !important;
 }
-
 .rbc-event:nth-child(7) {
   background-color: #f2f1ff !important;
 }
-
 .rbc-event:nth-child(8) {
   background-color: #fdf2fb !important;
 }
 
+/* Event Label & Content */
 .rbc-event-label {
+  white-space: normal !important;
+  font-size: 11px !important;
+  opacity: 0.7 !important;
   color: gray !important;
-  margin-bottom: 5px !important;
+  margin-bottom: 2px !important;
 }
 
+.rbc-event-content {
+  white-space: normal !important;
+  overflow: visible !important;
+  display: block !important;
+  line-height: 1.2 !important;
+}
+
+/* Ensure Big Calendar respects box model */
 .rbc-calendar * {
   box-sizing: border-box !important;
 }

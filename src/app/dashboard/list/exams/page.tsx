@@ -32,7 +32,7 @@ const ExamsListPage = async ({
 
   const columns = [
     {
-      header: "Subject Name",
+      header: "Exam Name",
       accessor: "name",
     },
 
@@ -42,8 +42,8 @@ const ExamsListPage = async ({
       className: "hidden md:table-cell",
     },
     {
-      header: "Teacher",
-      accessor: "teacher",
+      header: "Subject",
+      accessor: "subject",
       className: "hidden md:table-cell",
     },
     {
@@ -66,12 +66,11 @@ const ExamsListPage = async ({
       key={item.id}
       className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-lamaPurpleLight"
     >
-      <td className="flex items-center gap-4 p-4">
-        {item.lesson.subject.name}
-      </td>
+      <td className="flex items-center gap-4 p-4">{item.title}</td>
       <td>{item.lesson.class.name}</td>
       <td className="hidden md:table-cell ">
-        {item.lesson.teacher.name + " " + item.lesson.teacher.surname}
+        {/* {item.lesson.teacher.name + " " + item.lesson.teacher.surname} */}
+        {item.lesson.subject.name}
       </td>
       <td className="hidden md:table-cell ">
         {new Intl.DateTimeFormat("en-US").format(item.startTime)}

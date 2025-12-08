@@ -30,6 +30,9 @@ const BigCalendar = ({
       onView={handleOnChangeView}
       min={new Date(2025, 1, 0, 8, 0, 0)}
       max={new Date(2025, 1, 0, 17, 0, 0)}
+      components={{
+        event: ({ event }) => <span>{event.title}</span>,
+      }}
     />
   );
 };

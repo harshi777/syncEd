@@ -10,16 +10,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import InputField from "../InputField";
 import z from "zod";
-
-const classSchema = z.object({
-  id: z.coerce.number().optional(),
-  name: z.string().min(1, { message: "Subject name is required!" }),
-  capacity: z.coerce.number().min(1, { message: "Capacity name is required!" }),
-  gradeId: z.coerce.number().min(1, { message: "Grade name is required!" }),
-  supervisorId: z.coerce.string().optional(),
-});
-
-type ClassSchema = z.infer<typeof classSchema>;
+import { classSchema, ClassSchema } from "@/lib/formValidationSchemas";
 
 const ClassForm = ({
   type,
@@ -84,6 +75,7 @@ const ClassForm = ({
         <InputField
           label="Capacity"
           name="capacity"
+          type="number"
           defaultValue={data?.capacity}
           register={register}
           error={errors?.capacity}
@@ -103,7 +95,7 @@ const ClassForm = ({
           <select
             className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
             {...register("supervisorId")}
-            defaultValue={data?.teachers}
+            defaultValue={data?.supervisorId}
           >
             {teachers.map(
               (teacher: { id: string; name: string; surname: string }) => (

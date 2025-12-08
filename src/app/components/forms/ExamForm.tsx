@@ -58,6 +58,23 @@ const ExamForm = ({
 
   const { lessons } = relatedData;
 
+  const formatDateTimeLocal = (
+    isoString: string | undefined,
+  ): string | undefined => {
+    if (!isoString) return undefined;
+
+    // Create a Date object from the ISO string
+    const date = new Date(isoString);
+
+    // Format to YYYY-MM-DD
+    const datePart = date.toISOString().slice(0, 10);
+
+    // Format to hh:mm
+    const timePart = date.toTimeString().slice(0, 5);
+
+    return `${datePart}T${timePart}`;
+  };
+
   return (
     <form className="flex flex-col gap-8" onSubmit={onSubmit}>
       <h1 className="text-xl font-semibold">
@@ -75,7 +92,7 @@ const ExamForm = ({
         <InputField
           label="Start Date"
           name="startTime"
-          defaultValue={data?.startTime}
+          defaultValue={formatDateTimeLocal(data?.startTime)}
           register={register}
           error={errors?.startTime}
           type="datetime-local"
@@ -83,7 +100,7 @@ const ExamForm = ({
         <InputField
           label="End Date"
           name="endTime"
-          defaultValue={data?.endTime}
+          defaultValue={formatDateTimeLocal(data?.endTime)}
           register={register}
           error={errors?.endTime}
           type="datetime-local"
