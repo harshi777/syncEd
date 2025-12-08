@@ -1,4 +1,4 @@
-# SyncEd School Management Dashboard
+# The Unified Campus School Management Dashboard
 
 ## Getting Started
 
